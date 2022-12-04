@@ -2,6 +2,13 @@ import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
+# fmt: off
+# Fixme remove when https://github.com/kvesteri/sqlalchemy-utils/pull/644 is released #noqa
+import sqlalchemy # noqa  # isort:skip
+if sqlalchemy.__version__ == "2.0.0b3": # noqa  # isort:skip
+    sqlalchemy.__version__ = "2.0.0"    # noqa  # isort:skip
+# fmt: on
+
 import graphene
 
 from ..converter import convert_sqlalchemy_composite
